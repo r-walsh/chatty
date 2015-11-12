@@ -27,8 +27,12 @@ app.get('/', function( req, res ) {
 });
 
 app.post('/', function( req, res ) {
-	console.log(req.body);
-	messages.push(req.body);
+
+	messages.push({
+		message: req.body.message,
+		time: new Date()
+	});
+
 	res.status(200).set({
 		'Content-Type': 'application/json',
 		'Access-Control-Allow-Origin': '*',
